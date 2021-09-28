@@ -32,6 +32,7 @@ app.post("/api/food", (req, res) => {
   try {
     const { food } = req.body;
     studentArr.push(food);
+    console.log("does not exist");
   } catch (err) {
     rollbar.warning("does not exist");
   }
