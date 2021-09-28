@@ -28,13 +28,13 @@ app.post("/api/students", (req, res) => {
   res.status(200).send(studentArr);
 });
 
-app.post("/api/food", (req, res) => {
+app.get("/api/food", (req, res) => {
   try {
-    const { food } = req.body;
-    studentArr.push(food);
-    console.log("does not exist");
+    res.sendFile(path.join(__dirname, "./client/index.html"));
+    rollbar.info("HTML was monitored successfully");
   } catch (err) {
-    rollbar.warning("does not exist");
+    alert(err + "not working, try again");
+    rollbar.critical("not found");
   }
 });
 
