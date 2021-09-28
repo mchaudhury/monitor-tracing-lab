@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 const studentArr = [];
 
 app.post("/api/students", (req, res) => {
-  const { name } = req.body;
+  const { names } = req.body;
   studentArr.push(name);
 
   rollbar.log("student successfully added!");
