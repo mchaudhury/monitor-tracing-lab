@@ -21,11 +21,21 @@ app.get("/", (req, res) => {
 const studentArr = [];
 
 app.post("/api/students", (req, res) => {
-  const { name } = req.body;
-  studentArr.push(name);
+  //   const { name } = req.body;
+  //   studentArr.push(name);
 
-  rollbar.log("student successfully added!");
-  res.status(200).send(studentArr);
+  //   rollbar.log("student successfully added!");
+  //   res.status(200).send(studentArr);
+
+  try {
+    const { name } = req.body;
+    studentArr.push(name);
+
+    rollbar.log("student successfully added!");
+    res.status(200).send(studentArr);
+  } catch (err) {
+    rollbar.critical("not found");
+  }
 });
 
 app.get("/api/food", (req, res) => {
