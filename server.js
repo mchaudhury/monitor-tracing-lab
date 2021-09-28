@@ -27,7 +27,7 @@ app.post("/api/students", (req, res) => {
   //   rollbar.critical("student NOT successfully added!");
   //   res.status(200).send(studentArr);
 
-  rollbar.warning("warning");
+  rollbar.warning("warning, name is not found");
 });
 
 const port = process.env.PORT || 5656;
