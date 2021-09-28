@@ -16,8 +16,8 @@ app.get("/", (req, res) => {
   rollbar.critical("error error");
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./clie/index.html"));
+app.get("/", (req, res, hello) => {
+  res.sendFile(path.join(__dirname, "./client/index.html"));
   rollbar.warning("danger");
 });
 
