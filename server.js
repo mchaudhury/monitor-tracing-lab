@@ -13,12 +13,7 @@ const rollbar = new Rollbar({
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/ind.html"));
-  rollbar.critical("error error");
-});
-
-app.get("/", (req, res, hello) => {
-  res.sendFile(path.join(__dirname, "./client/index.html"));
-  rollbar.warning("danger");
+  rollbar.info("HTML was displayed successfully");
 });
 
 //STUDENTS STUFF
@@ -26,42 +21,35 @@ app.get("/", (req, res, hello) => {
 const studentArr = [];
 
 app.post("/api/students", (req, res) => {
-  //   const { name } = req.body;
-  //   studentArr.push(name);
+  const { names } = req.body;
+  studentArr.push(name);
 
   //   rollbar.log("student successfully added!");
   //   res.status(200).send(studentArr);
 
-  try {
-    const { name } = req.body;
-    studentArr.push(name);
-
-    rollbar.log("student successfully added!");
-    res.status(200).send(student);
-  } catch (err) {
-    rollbar.critical("not found");
-  }
+  rollbar.critical("student NOT successfully added!");
+  res.status(200).send(studentArr);
 });
 
-app.get("/", (req, res, hello) => {
-  // Try catch to catch error
-  try {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
-    rollbar.info("html file served succesfully");
-  } catch (err) {
-    rollbar.critical(err);
-  }
-});
+// app.get("/", (req, res, hello) => {
+//   // Try catch to catch error
+//   try {
+//     res.sendFile(path.join(__dirname, "./public/index.html"));
+//     rollbar.info("html file served succesfully");
+//   } catch (err) {
+//     rollbar.critical(err);
+//   }
+// });
 
-app.get("/", (req, res, house) => {
-  // Try catch to catch error
-  try {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
-    rollbar.info("html file served succesfully");
-  } catch (err) {
-    rollbar.warning(err);
-  }
-});
+// app.get("/", (req, res, house) => {
+//   // Try catch to catch error
+//   try {
+//     res.sendFile(path.join(__dirname, "./public/index.html"));
+//     rollbar.info("html file served succesfully");
+//   } catch (err) {
+//     rollbar.warning(err);
+//   }
+// });
 
 const port = process.env.PORT || 5656;
 
