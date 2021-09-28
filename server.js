@@ -12,8 +12,8 @@ const rollbar = new Rollbar({
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/ind.html"));
-  rollbar.info("HTML was displayed successfully");
+  res.sendFile(path.join(__dirname, "./client/index.html"));
+  rollbar.info("HTML was monitored successfully");
 });
 
 //STUDENTS STUFF
@@ -21,35 +21,12 @@ app.get("/", (req, res) => {
 const studentArr = [];
 
 app.post("/api/students", (req, res) => {
-  const { names } = req.body;
+  const { name } = req.body;
   studentArr.push(name);
 
-  //   rollbar.log("student successfully added!");
-  //   res.status(200).send(studentArr);
-
-  rollbar.critical("student NOT successfully added!");
+  rollbar.log("student successfully added!");
   res.status(200).send(studentArr);
 });
-
-// app.get("/", (req, res, hello) => {
-//   // Try catch to catch error
-//   try {
-//     res.sendFile(path.join(__dirname, "./public/index.html"));
-//     rollbar.info("html file served succesfully");
-//   } catch (err) {
-//     rollbar.critical(err);
-//   }
-// });
-
-// app.get("/", (req, res, house) => {
-//   // Try catch to catch error
-//   try {
-//     res.sendFile(path.join(__dirname, "./public/index.html"));
-//     rollbar.info("html file served succesfully");
-//   } catch (err) {
-//     rollbar.warning(err);
-//   }
-// });
 
 const port = process.env.PORT || 5656;
 
