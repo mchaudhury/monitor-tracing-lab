@@ -38,13 +38,23 @@ app.post("/api/students", (req, res) => {
   }
 });
 
-app.get("/api/food", (req, res) => {
+app.get("/", (req, res, hello) => {
+  // Try catch to catch error
   try {
-    res.sendFile(path.join(__dirname, "./client/ind.html"));
-    rollbar.info("HTML was monitored successfully");
+    res.sendFile(path.join(__dirname, "./public/index.html"));
+    rollbar.info("html file served succesfully");
   } catch (err) {
-    alert(err + "not working, try again");
-    rollbar.critical("not found");
+    rollbar.critical(err);
+  }
+});
+
+app.get("/", (req, res, house) => {
+  // Try catch to catch error
+  try {
+    res.sendFile(path.join(__dirname, "./public/index.html"));
+    rollbar.info("html file served succesfully");
+  } catch (err) {
+    rollbar.warning(err);
   }
 });
 
