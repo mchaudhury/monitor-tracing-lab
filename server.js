@@ -20,8 +20,8 @@ app.get("/", (req, res) => {
 
 const studentArr = [];
 
-app.post("/api/student", (req, res) => {
-  const { name } = req.body;
+app.post("/api/students", (req, res) => {
+  const { names } = req.body;
   studentArr.push(name);
 
   rollbar.critical("student NOT successfully added!");
