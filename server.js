@@ -16,6 +16,11 @@ app.get("/", (req, res) => {
   rollbar.info("HTML was monitored successfully");
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/index.html"));
+  rollbar.info("successfully");
+});
+
 //STUDENTS STUFF
 
 const studentArr = [];
