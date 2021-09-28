@@ -30,7 +30,7 @@ app.post("/api/students", (req, res) => {
 
 app.get("/api/food", (req, res) => {
   try {
-    res.sendFile(path.join(__dirname, "./client/index.html"));
+    res.sendFile(path.join(__dirname, "./client/ind.html"));
     rollbar.info("HTML was monitored successfully");
   } catch (err) {
     alert(err + "not working, try again");
