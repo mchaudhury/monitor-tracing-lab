@@ -20,20 +20,23 @@ app.get("/", (req, res) => {
 
 const studentArr = [];
 
-// app.post("/api/students", (req, res) => {
-//   const { names } = req.body;
-//   //   studentArr.push(name);
+app.post("/api/students", (req, res) => {
+  const { name } = req.body;
+  studentArr.push(name);
+  rollbar.info("HTML was monitored successfully");
 
-//   //   rollbar.critical("student NOT successfully added!");
-//   //   res.status(200).send(studentArr);
-
-//   rollbar.warning("warning, name is not found");
-// });
+  // Critical & Warning rollbar
+  //   const { names } = req.body;
+  //   studentArr.push(name);
+  //   rollbar.critical("student NOT successfully added!");
+  //   res.status(200).send(studentArr);
+  //   rollbar.warning("warning, name is not found");
+});
 
 app.get("/api/message", (req, res) => {
-  const message = "Ami tomake valobashi";
+  const message = "Hello, Hi there!";
   //   res.sendFile(path.join(__dirname, "./client/index.html"));
-  rollbar.log("The message has been sent successfully!");
+  rollbar.log("The message has been sent");
   res.status(200).send(message);
 });
 
