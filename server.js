@@ -21,11 +21,20 @@ app.get("/", (req, res) => {
 const studentArr = [];
 
 app.post("/api/students", (req, res) => {
-  const { names } = req.body;
+  const { name } = req.body;
   studentArr.push(name);
 
   rollbar.log("student successfully added!");
   res.status(200).send(studentArr);
+});
+
+app.post("/api/food", (req, res) => {
+  try {
+    const { food } = req.body;
+    studentArr.push(food);
+  } catch (err) {
+    rollbar.warning("does not exist");
+  }
 });
 
 const port = process.env.PORT || 5656;
