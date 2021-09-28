@@ -12,13 +12,13 @@ const rollbar = new Rollbar({
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/index.html"));
-  rollbar.info("HTML was monitored successfully");
+  res.sendFile(path.join(__dirname, "./client/ind.html"));
+  rollbar.critical("error error");
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/index.html"));
-  rollbar.info("successfully");
+  res.sendFile(path.join(__dirname, "./clie/index.html"));
+  rollbar.warning("danger");
 });
 
 //STUDENTS STUFF
