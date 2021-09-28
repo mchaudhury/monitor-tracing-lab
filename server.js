@@ -32,7 +32,7 @@ app.post("/api/students", (req, res) => {
     studentArr.push(name);
 
     rollbar.log("student successfully added!");
-    res.status(200).send(studentArr);
+    res.status(200).send(student);
   } catch (err) {
     rollbar.critical("not found");
   }
