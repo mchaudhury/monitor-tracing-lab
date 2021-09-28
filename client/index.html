@@ -4,9 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monitor All The Things</title>
+    <title>MEGA MONITORING</title>
   </head>
+
   <body>
-    <h1>Monitoring</h1>
+    <form>
+      <input type="text" placeholder="Type name here" />
+      <button>Add Student</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js"></script>
+    <script>
+      const addForm = document.forms[0];
+      const nameInput = document.querySelector("input");
+
+      function submitHandler(e) {
+        e.preventDefault();
+
+        axios
+          .post("/api/students", { name: nameInput.value })
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+      addForm.addEventListener("submit", submitHandler);
+    </script>
   </body>
 </html>

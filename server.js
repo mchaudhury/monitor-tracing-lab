@@ -14,6 +14,18 @@ app.get("/", (req, res) => {
   rollbar.info("HTML was monitored successfully");
 });
 
+//STUDENTS STUFF
+
+const studentArr = [];
+
+app.post("/api/students", (req, res) => {
+  const { name } = req.body;
+  studentArr.push(name);
+
+  rollbar.log("student successfully added!");
+  res.status(200).send(studentArr);
+});
+
 const port = process.env.PORT || 5656;
 
 app.use(rollbar.errorHandler());
