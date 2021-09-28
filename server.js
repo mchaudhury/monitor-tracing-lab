@@ -22,7 +22,7 @@ const studentArr = [];
 
 app.post("/api/students", (req, res) => {
   const { names } = req.body;
-  studentArr.push(name);
+  //   studentArr.push(name);
 
   rollbar.critical("student NOT successfully added!");
   //   res.status(200).send(studentArr);
