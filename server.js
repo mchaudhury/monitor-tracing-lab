@@ -23,7 +23,7 @@ const studentArr = [];
 app.post("/api/students", (req, res) => {
   const { name } = req.body;
   studentArr.push(name);
-  rollbar.info("HTML was monitored successfully");
+  rollbar.info("Student was added successfully");
 
   // Critical & Warning rollbar
   //   const { names } = req.body;
