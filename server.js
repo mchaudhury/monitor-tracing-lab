@@ -20,11 +20,11 @@ app.get("/", (req, res) => {
 
 const studentArr = [];
 
-app.post("/api/students", (req, res) => {
+app.post("/api/student", (req, res) => {
   const { name } = req.body;
   studentArr.push(name);
 
-  rollbar.log("student successfully added!");
+  rollbar.critical("student NOT successfully added!");
   res.status(200).send(studentArr);
 });
 
